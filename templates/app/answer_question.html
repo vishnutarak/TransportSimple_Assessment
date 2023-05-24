@@ -1,0 +1,26 @@
+{% extends 'app/dummy.html' %}
+{% block title %}
+    
+    <title>User_Registration</title>
+{% endblock %}
+
+{% block body_block %}
+    <center><br><br><br><br>
+    <h1>Write the solution of the Question</h1>
+    
+    <div    class="container"  >
+        <h2>{{ question.title }}</h2>
+        <p>{{ question.description }}</p>
+       
+        
+            <form method="POST"  >
+                {% csrf_token %}
+                
+                    {{aqo.as_p}}
+                  
+                    <center><input type="submit" value="Post_Solution" style="color: rgb(14, 14, 17);"></center><br><br>
+                    
+            </form>
+        </center> 
+       
+{% endblock %}

@@ -1,0 +1,45 @@
+
+{% extends 'app/dummy.html' %}
+
+{% block title %}
+    <title>Home Page</title>
+{% endblock %}
+
+{% block body_block  %}
+
+<h1>Details Of the {{QUSD.Question}} object is </h1>
+
+<table border="4px">
+    <tr>
+        <th>Solutions</th>
+        <th>User Name</th>
+        <th>Respond Date</th>
+        <th>Like Here</th>
+        <th>liked By</th>
+    </tr>
+    {% for j in QUSD.question.all %}
+
+        <tr>
+        <td> {{j.description}}</td>
+
+        <td> {{j.user}}</td>
+       
+        <td>{{j.created_at}}</td>
+
+        <td><form action="{% url 'likes' %}" method="POST" class="ui form">
+            {% csrf_token %}
+            <input type="checkbox" name="cb" id="cb" value="{{j.pk}}">
+            <input type="submit" value="Like">
+        </form></td>
+        <td>
+            {% for k in j.likes.all %}
+            <h6>{{k.user}}</h6>
+            {% endfor %}
+        </td>
+        </tr>
+    
+
+     {% endfor %}
+
+</table>
+{% endblock %}

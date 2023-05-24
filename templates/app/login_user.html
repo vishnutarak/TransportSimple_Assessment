@@ -1,0 +1,35 @@
+{% extends 'app/dummy.html' %}
+{% block title %}
+    <title>login_user</title>
+{% endblock %}
+
+{% block body_block %}
+<center>
+    <div style="margin-top: 200px;">
+<form method="POST">
+
+    {% csrf_token %}
+<div >
+    <h2>Login Here</h2>
+    <br>
+		
+    <div >
+        <label for="username">username:</label>
+            <input type="text" name="username" id="username"><br>
+    </div >
+    <br>
+    <div >
+        <label for="password">password</label>
+            <input type="password" name="password" id="password"><br>
+
+    </div >
+    <br>
+    <div >
+    <input type="submit" value="login_user" class=" btn btn-primary">
+      </div>  
+             
+    </div>
+</form>
+</div>
+</center>
+{% endblock %}
