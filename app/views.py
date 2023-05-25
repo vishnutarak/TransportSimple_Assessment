@@ -6,9 +6,9 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate,login,logout
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
-from django.urls import reverse
+from django.urls import reverse,reverse_lazy
 from django.http import HttpResponseRedirect
-from django.views.generic import ListView,DetailView
+from django.views.generic import ListView,DetailView,DeleteView
 
 
 def user_registration(request):
