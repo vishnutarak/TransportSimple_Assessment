@@ -27,6 +27,8 @@ urlpatterns = [
     path('post_questions/',post_questions,name='post_questions'),
     path('answer_question/',answer_question,name='answer_question'),
     path('likes/',likes,name='likes'),
+    path('hello/',hello.as_view(),name='hello'),
+    path('conform_logout/',conform_logout,name='conform_logout'),
     re_path('(?P<pk>\d+)/',DetailQuestions.as_view(),name='detail'),
     
 ]

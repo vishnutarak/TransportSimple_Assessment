@@ -8,7 +8,7 @@ from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse,reverse_lazy
 from django.http import HttpResponseRedirect
-from django.views.generic import ListView,DetailView,DeleteView
+from django.views.generic import ListView,DetailView,DeleteView,TemplateView
 
 
 def user_registration(request):
@@ -93,10 +93,12 @@ def answer_question(request):
         
     return render(request, 'app/answer_question.html',d)
 
+class hello(TemplateView):
+    template_name = 'app/hello.html'
+
 @login_required
 def logout_user(request):
-    logout(request)
-    return HttpResponseRedirect(reverse('ListOfQuestions'))
+    return HttpResponseRedirect(reverse('hello'))
 
 @login_required
 def likes(request):
@@ -108,3 +110,8 @@ def likes(request):
         LO=Like.objects.get_or_create(answer=AO,user=UO,value='Like')[0]
         LO.save()
         return HttpResponseRedirect(reverse('ListOfQuestions'))
+
+@login_required
+def conform_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('login_user'))
